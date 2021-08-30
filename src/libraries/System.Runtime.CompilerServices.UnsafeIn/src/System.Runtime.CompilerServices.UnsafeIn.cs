@@ -124,8 +124,8 @@ namespace System.Runtime.CompilerServices
             => ref Unsafe.As<TFrom, TTo>(ref Unsafe.AsRef(in source));
 
         //[return: NotNullIfNotNull("o")]
-        //public static T? As<T>(object? o) where T : class
-        //    => throw new NotImplementedException();
+        //public static readonly T? As<T>(in object? o) where T : class
+        //    => Unsafe.As<T>(o);
 
         /// <summary>
         /// Returns a pointer to the given by-ref parameter.
@@ -183,7 +183,8 @@ namespace System.Runtime.CompilerServices
         public static void Copy<T>(void* destination, in T source)
             => Unsafe.Copy(destination, ref Unsafe.AsRef(in source));
 
-        //public static void Copy<T>(ref T destination, void* source);
+        //public static void Copy<T>(ref T destination, void* source)
+        //    => Unsafe.Copy(ref destination, source);
 
         /// <summary>
         /// Copies bytes from the source address to the destination address.
