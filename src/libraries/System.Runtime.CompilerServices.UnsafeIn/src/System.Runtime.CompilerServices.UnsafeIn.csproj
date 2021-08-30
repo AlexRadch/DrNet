@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion >9.0</LangVersion>
+    <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.1;netstandard2.0;netstandard1.1;net461</TargetFrameworks>
+    
+    <UnsafeVersion>6.*-*</UnsafeVersion>
+    <DefineConstants>UNSAFE6</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
+    <UnsafeVersion>5.*</UnsafeVersion>
+    <DefineConstants>UNSAFE5</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nullable" Version="1.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="$(UnsafeVersion)" />
+  </ItemGroup>
+
+</Project>
