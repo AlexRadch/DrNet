@@ -1,27 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>9.0</LangVersion>
     <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.1;netstandard2.0;netstandard1.1;net461</TargetFrameworks>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Copyright>Copyright (c) .NET Foundation and Contributors</Copyright>
-    <Company>.NET Foundation and Contributors</Company>
+    <PackageId>DrNet.UnsafeIn</PackageId>
+    <Version>6.0.0-preview.1</Version>
     <Authors>.NET Foundation and Contributors</Authors>
-    <Owners>dotnetframework</Owners>
+    <Company>.NET Foundation and Contributors</Company>
     <Product>DrNet .Net libraries</Product>
     <Description>Provides the System.Runtime.CompilerServices.UnsafeIn class, which provides generic, low-level functionality for manipulating readonly pointers.
 
 Commonly Used Types:
 System.Runtime.CompilerServices.UnsafeIn</Description>
+    <Copyright>Copyright (c) .NET Foundation and Contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/AlexRadch/DrNet</PackageProjectUrl>
+    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
+    <PackageIcon>dotNet.png</PackageIcon>
     <RepositoryUrl>https://github.com/AlexRadch/DrNet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>6.0.0-preview.1</Version>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIcon>dotNet.png</PackageIcon>
-    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
 
     <DefineConstants Condition="">UNSAFE5P</DefineConstants>
     <DefineConstants Condition="'$(TargetFramework)' != 'netstandard1.1'">UNSAFE6P</DefineConstants>
