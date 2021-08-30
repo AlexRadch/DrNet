@@ -44,7 +44,7 @@ namespace System.Runtime.CompilerServices
         public static ref readonly T Add<T>(in T source, IntPtr elementOffset)
             => ref Unsafe.Add(ref Unsafe.AsRef(in source), elementOffset);
 
-#if UNSAFE6
+#if UNSAFE6P
         /// <summary>
         /// Adds an element offset to the given reference.
         /// </summary>
@@ -76,7 +76,7 @@ namespace System.Runtime.CompilerServices
         public static ref readonly T AddByteOffset<T>(in T source, IntPtr byteOffset)
             => ref Unsafe.AddByteOffset(ref Unsafe.AsRef(in source), byteOffset);
 
-#if UNSAFE6
+#if UNSAFE6P
         /// <summary>
         /// Adds a byte offset to the given reference.
         /// </summary>
@@ -308,7 +308,7 @@ namespace System.Runtime.CompilerServices
         public static ref readonly T Subtract<T>(in T source, IntPtr elementOffset)
             => ref Unsafe.Subtract(ref Unsafe.AsRef(in source), elementOffset);
 
-#if UNSAFE6
+#if UNSAFE6P
         /// <summary>
         /// Subtracts an element offset from the given reference.
         /// </summary>
@@ -340,7 +340,7 @@ namespace System.Runtime.CompilerServices
         public static ref readonly T SubtractByteOffset<T>(in T source, IntPtr byteOffset)
             => ref Unsafe.Subtract(ref Unsafe.AsRef(in source), byteOffset);
 
-#if UNSAFE6
+#if UNSAFE6P
         /// <summary>
         /// Subtracts a byte offset from the given reference.
         /// </summary>
