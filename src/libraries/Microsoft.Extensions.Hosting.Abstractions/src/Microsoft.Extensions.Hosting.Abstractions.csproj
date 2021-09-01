@@ -6,7 +6,7 @@
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DrNet.Extensions.Hosting.Abstractions</PackageId>
-    <Version>6.0.0-preview.1</Version>
+    <Version>6.0.0-preview.2</Version>
     <Authors>.NET Foundation and Contributors</Authors>
     <Company>.NET Foundation and Contributors</Company>
     <Product>DrNet .Net libraries</Product>
