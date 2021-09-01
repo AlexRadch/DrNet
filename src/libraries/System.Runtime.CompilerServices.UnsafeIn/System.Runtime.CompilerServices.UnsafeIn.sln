@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Runtime.CompilerServices.UnsafeIn", "src\System.Runtime.CompilerServices.UnsafeIn.csproj", "{602A0E43-633E-479F-B0D1-2BFD958AE00E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Runtime.CompilerServices.UnsafeIn.Tests", "tests\System.Runtime.CompilerServices.UnsafeIn.Tests.csproj", "{6AA3EFB1-236C-4DD0-B42D-4C8D85340E80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Runtime.CompilerServices.UnsafeIn.Tests", "tests\System.Runtime.CompilerServices.UnsafeIn.Tests.csproj", "{6AA3EFB1-236C-4DD0-B42D-4C8D85340E80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1207316A-3A1D-4102-B026-BC58F9740DB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0ED61D24-9B69-43C9-A180-FED62D539DF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +28,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{602A0E43-633E-479F-B0D1-2BFD958AE00E} = {1207316A-3A1D-4102-B026-BC58F9740DB8}
+		{6AA3EFB1-236C-4DD0-B42D-4C8D85340E80} = {0ED61D24-9B69-43C9-A180-FED62D539DF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFFB302A-A798-4F84-ADA4-74CE17ADDE0B}

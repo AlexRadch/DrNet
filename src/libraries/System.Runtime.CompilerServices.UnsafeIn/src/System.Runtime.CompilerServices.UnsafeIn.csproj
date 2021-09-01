@@ -3,6 +3,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>9.0</LangVersion>
     <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.1;netstandard2.0;netstandard1.1;net461</TargetFrameworks>
+    <RootNamespace>System.Runtime.CompilerServices</RootNamespace>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DrNet.UnsafeIn</PackageId>
@@ -18,13 +19,13 @@ System.Runtime.CompilerServices.UnsafeIn</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/AlexRadch/DrNet</PackageProjectUrl>
     <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
-    <PackageIcon>dotNet.png</PackageIcon>
+    <PackageIcon>Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/AlexRadch/DrNet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <DefineConstants Condition="">UNSAFE5P</DefineConstants>
     <DefineConstants Condition="'$(TargetFramework)' != 'netstandard1.1'">UNSAFE6P</DefineConstants>
-</PropertyGroup>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Nullable" Version="1.*">

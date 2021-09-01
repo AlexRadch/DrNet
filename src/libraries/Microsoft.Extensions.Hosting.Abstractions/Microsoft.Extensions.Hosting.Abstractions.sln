@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Hosting.Abstractions", "src\Microsoft.Extensions.Hosting.Abstractions.csproj", "{664450C6-102A-435A-875B-3445B3332E90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6C6C2D2B-C83F-4513-A9BB-33F8204B9EA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{664450C6-102A-435A-875B-3445B3332E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664450C6-102A-435A-875B-3445B3332E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664450C6-102A-435A-875B-3445B3332E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664450C6-102A-435A-875B-3445B3332E90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{664450C6-102A-435A-875B-3445B3332E90} = {6C6C2D2B-C83F-4513-A9BB-33F8204B9EA9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7897D6F2-D18F-4ABB-9698-593AE45059C5}
+	EndGlobalSection
+EndGlobal
