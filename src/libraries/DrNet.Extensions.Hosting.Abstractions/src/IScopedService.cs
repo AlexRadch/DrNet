@@ -13,6 +13,11 @@ namespace Microsoft.Extensions.Hosting
     /// </summary>
     public interface IScopedService
     {
+        /// <summary>
+        /// TODO: DoWork
+        /// </summary>
+        /// <param name="stoppingToken"></param>
+        /// <returns></returns>
         Task DoWork(CancellationToken stoppingToken);
     }
 }
