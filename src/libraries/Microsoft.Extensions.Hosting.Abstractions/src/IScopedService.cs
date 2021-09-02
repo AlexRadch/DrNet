@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Extensions.Hosting
 {
+    /// <summary>
+    /// Consumed scoped service should implement this interface. <see cref="BackgroundServiceToConsumeScopedService<>"/>
+    /// </summary>
     public interface IScopedService
     {
         Task DoWork(CancellationToken stoppingToken);
