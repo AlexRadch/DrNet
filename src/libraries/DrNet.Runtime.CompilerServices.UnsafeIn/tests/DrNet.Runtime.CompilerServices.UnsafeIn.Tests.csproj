@@ -19,6 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\System.Runtime.CompilerServices.UnsafeIn.csproj" />
+    <ProjectReference Include="..\src\DrNet.Runtime.CompilerServices.UnsafeIn.csproj" />
   </ItemGroup>
 </Project>

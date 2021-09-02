@@ -238,23 +238,49 @@ namespace System.Runtime.CompilerServices
 
         /// <summary>
         /// Returns a value that indicates whether a specified reference is less than another specified reference.
+        /// Determines whether the memory address referenced by <paramref name="left"/> is less than the memory address referenced by <paramref name="right"/>.
         /// </summary>
         /// 
         /// <typeparam name="T">The type of the reference.</typeparam>
         /// 
-        /// <param name="left">The first value to compare.</param>
+        /// <param name="left">The first reference to compare.</param>
         /// 
-        /// <param name="right">The second value to compare.</param>
+        /// <param name="right">The second reference to compare.</param>
         /// 
-        /// <returns>true if left is less than right; otherwise, false.</returns>
+        /// <returns>
+        /// <c>true</c> if the memory address referenced by <paramref name="left"/> is less than the memory address referenced by <paramref name="right"/>; otherwise <c>false</c>.
+        /// </returns>
+        /// 
+        /// <remarks>
+        /// This check is conceptually similar to "(void*)(&amp;left) &lt; (void*)(&amp;right)". Both parameters must reference the same object, array, or span;
+        /// or the objects being referenced must both be pinned; or both references must represent unmanaged pointers; otherwise the result is undefined.
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsAddressLessThan<T>([AllowNull] in T left, [AllowNull] in T right)
             => Unsafe.IsAddressLessThan(ref Unsafe.AsRef(in left), ref Unsafe.AsRef(in right));
 
+        /// <summary>
+        /// Returns if a given reference to a value of type <typeparamref name="T"/> is a null reference.
+        /// </summary>
+        /// 
+        /// <typeparam name="T">Type of <paramref name="source"/> value.</typeparam>
+        /// 
+        /// <param name="source">The reference to check.</param>
+        /// 
+        /// <returns><c>true</c> if reference to <paramref name="source"/> is a null reference; otherwise <c>false</c>.</returns>
+        /// 
+        /// <remarks>This check is conceptually similar to "(void*)(&amp;source) == nullptr".</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsNullRef<T>(in T source)
             => Unsafe.IsNullRef(ref Unsafe.AsRef(in source));
 
+        /// <summary>
+        /// Returns a reference to a value of type <typeparamref name="T"/> that is a null reference.
+        /// </summary>
+        /// 
+        /// <typeparam name="T">The type of reference.</typeparam>
+        /// 
+        /// <returns>Null reference to a value of type <typeparamref name="T"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly T NullRef<T>()
             => ref Unsafe.NullRef<T>();

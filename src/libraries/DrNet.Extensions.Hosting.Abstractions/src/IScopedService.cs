@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Extensions.Hosting
 {
     /// <summary>
-    /// Consumed scoped service should implement this interface. <see cref="BackgroundServiceToConsumeScopedService<>"/>
+    /// Consumed scoped service should implement this interface. <see cref="BackgroundServiceToConsumeScopedService{TScopedService}"/>
     /// </summary>
     public interface IScopedService
     {
