@@ -11,11 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1207316A-3A1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0ED61D24-9B69-43C9-A180-FED62D539DF3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{523B55C6-E240-4680-9CAB-81302A5E41E7}"
-	ProjectSection(SolutionItems) = preProject
-		NugetPush.cmd = NugetPush.cmd
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
