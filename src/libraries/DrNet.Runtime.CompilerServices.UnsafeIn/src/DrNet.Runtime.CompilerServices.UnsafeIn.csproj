@@ -13,8 +13,8 @@
 Commonly Used Types:
 System.Runtime.CompilerServices.UnsafeIn</Description>
 
-    <DefineConstants Condition="">UNSAFE6P</DefineConstants>
-    <DefineConstants Condition="'$(TargetFramework)' == 'netstandard1.1' Or '$(TargetFramework)' == 'netcoreapp2.0' Or '$(TargetFramework)' == 'net45'">UNSAFE5P</DefineConstants>
+    <DefineConstants>$(DefineConstants);UNSAFE5P</DefineConstants>
+    <DefineConstants Condition="!('$(TargetFramework)' == 'netstandard1.1' Or '$(TargetFramework)' == 'netcoreapp2.0' Or '$(TargetFramework)' == 'net45')">$(DefineConstants);UNSAFE6P</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrNet.Extensions.Hosting.Ab
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6C6C2D2B-C83F-4513-A9BB-33F8204B9EA9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B361653B-4D50-489C-BE8E-4C2817605579}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrNet.Extensions.Hosting.Abstractions.Tests", "tests\DrNet.Extensions.Hosting.Abstractions.Tests\DrNet.Extensions.Hosting.Abstractions.Tests.csproj", "{8D1AF9FD-C7A8-41AA-B481-3E16819BDEE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{664450C6-102A-435A-875B-3445B3332E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{664450C6-102A-435A-875B-3445B3332E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{664450C6-102A-435A-875B-3445B3332E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1AF9FD-C7A8-41AA-B481-3E16819BDEE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1AF9FD-C7A8-41AA-B481-3E16819BDEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1AF9FD-C7A8-41AA-B481-3E16819BDEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1AF9FD-C7A8-41AA-B481-3E16819BDEE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{664450C6-102A-435A-875B-3445B3332E90} = {6C6C2D2B-C83F-4513-A9BB-33F8204B9EA9}
+		{8D1AF9FD-C7A8-41AA-B481-3E16819BDEE5} = {B361653B-4D50-489C-BE8E-4C2817605579}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7897D6F2-D18F-4ABB-9698-593AE45059C5}

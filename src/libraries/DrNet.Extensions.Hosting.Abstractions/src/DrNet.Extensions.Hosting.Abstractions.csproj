@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>net6.0;netcoreapp3.0;netcoreapp2.1;netstandard2.1;netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>Microsoft.Extensions.Hosting</RootNamespace>
     <LangVersion>9.0</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
@@ -9,13 +9,26 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Hosting and startup abstractions for applications.</Description>
 
+    <DefineConstants Condition="">$(DefineConstants);Hosting5P;Logging6P</DefineConstants>
+    <DefineConstants Condition="!('$(TargetFramework)' == 'netcoreapp3.0' Or '$(TargetFramework)' == 'netcoreapp2.1' Or '$(TargetFramework)' == 'netstandard1.1' Or '$(TargetFramework)' == 'net45')">$(DefineConstants);Hosting6P</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Hosting5P(;.*)*$'))">
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Hosting6P(;.*)*$'))">
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.*-*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Logging5P(;.*)*$'))">
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Logging6P(;.*)*$'))">
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.*-*" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Include="..\..\..\..\Icon.png">
       <Pack>True</Pack>
