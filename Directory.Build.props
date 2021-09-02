@@ -1,5 +1,19 @@
 <Project>
   <PropertyGroup>
-    <PackageVersion>6.0.0-preview.7.21377.1</PackageVersion>
+
+    <Version>$(DrNetVersion)</Version>
+    <Version Condition="'$(DrNetVersion)' == ''">6.0.0-preview.7.0</Version>
+    <Authors>.NET Foundation and Contributors</Authors>
+    <Company>.NET Foundation and Contributors</Company>
+    <Product>DrNet .Net libraries</Product>
+    <Copyright>Copyright (c) .NET Foundation and Contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/AlexRadch/DrNet</PackageProjectUrl>
+    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
+    <PackageIcon>Icon.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AlexRadch/DrNet</RepositoryUrl>
+
+    <RepositoryCommit>$(DrNetCommit)</RepositoryCommit>
   </PropertyGroup>
 </Project>

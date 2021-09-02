@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;netcoreapp3.1;netstandard2.1;netstandard2.0;netstandard1.1;net461</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1;netcoreapp2.0;netstandard2.1;netstandard2.0;netstandard1.1;net461;net45</TargetFrameworks>
     <RootNamespace>System.Runtime.CompilerServices</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>9.0</LangVersion>
@@ -8,24 +8,13 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>$(PackageVersion)</Version>
-    <Authors>.NET Foundation and Contributors</Authors>
-    <Company>.NET Foundation and Contributors</Company>
-    <Product>DrNet .Net libraries</Product>
     <Description>Provides the System.Runtime.CompilerServices.UnsafeIn class, which provides generic, low-level functionality for manipulating readonly pointers.
 
 Commonly Used Types:
 System.Runtime.CompilerServices.UnsafeIn</Description>
-    <Copyright>Copyright (c) .NET Foundation and Contributors</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/AlexRadch/DrNet</PackageProjectUrl>
-    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
-    <PackageIcon>Icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/AlexRadch/DrNet</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
 
-    <DefineConstants Condition="">UNSAFE5P</DefineConstants>
-    <DefineConstants Condition="'$(TargetFramework)' != 'netstandard1.1'">UNSAFE6P</DefineConstants>
+    <DefineConstants Condition="">UNSAFE6P</DefineConstants>
+    <DefineConstants Condition="'$(TargetFramework)' == 'netstandard1.1' Or '$(TargetFramework)' == 'netcoreapp2.0' Or '$(TargetFramework)' == 'net45'">UNSAFE5P</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
