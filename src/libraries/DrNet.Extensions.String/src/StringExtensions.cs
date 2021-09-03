@@ -4,13 +4,15 @@
 #nullable enable
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Text;
 
 namespace DrNet.Extensions.String
 {
     public static class StringExtensions
     {
+        #region string.
+
         public static int Compare(this string? strA, int indexA, string? strB, int indexB, int length)
             => string.Compare(strA, indexA, strB, indexB, length);
 
@@ -88,12 +90,61 @@ namespace DrNet.Extensions.String
         public static bool IsNullOrWhiteSpace(this string? value)
             => string.IsNullOrWhiteSpace(value);
 
+        #endregion
+
+        #region Not
+
+        public static bool NotContains(this string str, char value)
+#if StringSearchChar
+            => !str.Contains(value);
+#else
+            => str.IndexOf(value) < 0;
+#endif
+
+        public static bool NotContains(this string str, char value, StringComparison comparisonType)
+#if StringSearchChar
+            => !str.Contains(value, comparisonType);
+#else
+            => str.IndexOf(value.ToString(), comparisonType) < 0;
+#endif
+
+        public static bool NotContains(this string str, string value)
+            => !str.Contains(value);
+
+        public static bool NotContains(this string str, string value, StringComparison comparisonType)
+#if StringSearchChar
+            => !str.Contains(value, comparisonType);
+#else
+            => str.IndexOf(value, comparisonType) < 0;
+#endif
+
+        public static bool NotEndsWith(this string str, char value)
+#if StringSearchChar
+            => !str.EndsWith(value);
+#else
+            => !str.EndsWith(value.ToString());
+#endif
+
+        public static bool NotEndsWith(this string str, string value)
+            => !str.EndsWith(value);
+
+        public static bool NotEndsWith(this string str, string value, bool ignoreCase, CultureInfo? culture)
+            => !str.EndsWith(value, ignoreCase, culture);
+
+        public static bool NotEndsWith(this string str, string value, StringComparison comparisonType)
+            => !str.EndsWith(value, comparisonType);
 
         public static bool NotEquals(this string? a, string? b)
             => !string.Equals(a, b);
 
         public static bool NotEquals(this string? a, string? b, StringComparison comparisonType)
             => !string.Equals(a, b, comparisonType);
+
+        public static bool IsNotNormalized(this string str)
+            => !str.IsNormalized();
+
+        public static bool IsNotNormalized(this string str, NormalizationForm normalizationForm)
+            => !str.IsNormalized(normalizationForm);
 
         //public static bool IsNotNullAndNotEmpty([NotNullWhen(false)] this string? value)
         public static bool IsNotNullAndNotEmpty(this string? value)
@@ -102,6 +153,24 @@ namespace DrNet.Extensions.String
         //public static bool IsNotNullAndNotWhiteSpace([NotNullWhen(false)] this string? value)
         public static bool IsNotNullAndNotWhiteSpace(this string? value)
             => !string.IsNullOrWhiteSpace(value);
+
+        public static bool NotStartsWith(this string str, char value)
+#if StringSearchChar
+            => !str.StartsWith(value);
+#else
+            => !str.StartsWith(value.ToString());
+#endif
+
+        public static bool NotStartsWith(this string str, string value)
+            => !str.StartsWith(value);
+
+        public static bool NotStartsWith(this string str, string value, bool ignoreCase, CultureInfo? culture)
+            => !str.StartsWith(value, ignoreCase, culture);
+
+        public static bool NotStartsWith(this string str, string value, StringComparison comparisonType)
+            => !str.StartsWith(value, comparisonType);
+
+#endregion
 
         public static string RemoveStart(this string @this, string value)
         {

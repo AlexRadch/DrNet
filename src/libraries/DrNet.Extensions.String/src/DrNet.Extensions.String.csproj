@@ -8,6 +8,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Extensions for strings</Description>
 
+    <DefineConstants Condition="!('$(TargetFramework)' == 'net461')">$(DefineConstants);StringSearchChar</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
