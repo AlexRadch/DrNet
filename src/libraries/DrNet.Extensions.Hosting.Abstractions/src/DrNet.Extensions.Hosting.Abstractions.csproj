@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;netcoreapp3.0;netcoreapp2.1;netstandard2.1;netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0</TargetFrameworks>
     <RootNamespace>Microsoft.Extensions.Hosting</RootNamespace>
     <LangVersion>9.0</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
@@ -8,24 +8,25 @@
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Hosting and startup abstractions for applications.</Description>
-
-    <DefineConstants Condition="">$(DefineConstants);Hosting5P;Logging6P</DefineConstants>
-    <DefineConstants Condition="!('$(TargetFramework)' == 'netcoreapp3.0' Or '$(TargetFramework)' == 'netcoreapp2.1' Or '$(TargetFramework)' == 'netstandard1.1' Or '$(TargetFramework)' == 'net45')">$(DefineConstants);Hosting6P</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Hosting5P(;.*)*$'))">
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.*" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+  </PropertyGroup>
 
-  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Hosting6P(;.*)*$'))">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  </PropertyGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.*-*" />
   </ItemGroup>
 
-  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Logging5P(;.*)*$'))">
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.*" />
-  </ItemGroup>
-
-  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*Logging6P(;.*)*$'))">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.*-*" />
   </ItemGroup>
 
