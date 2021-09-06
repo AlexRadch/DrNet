@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;netstandard1.1;netstandard1.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
@@ -6,7 +6,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Extensions for strings</Description>
+    <Description>Extensions methods for string class</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">

@@ -9,6 +9,9 @@ using System.Text;
 
 namespace DrNet.Extensions.String
 {
+    /// <summary>
+    /// Extensions methods for string class
+    /// </summary>
     public static class StringExtensions
     {
         #region Fast static methods access
@@ -178,7 +181,7 @@ namespace DrNet.Extensions.String
 
 #endregion
 
-#region Contains
+        #region Contains
 
         public static bool Contains(this string str, char value)
             => str.IndexOf(value) >= 0;
@@ -193,9 +196,9 @@ namespace DrNet.Extensions.String
         public static bool Contains(this string str, string value, StringComparison comparisonType)
             => str.IndexOf(value, comparisonType) >= 0;
 
-#endregion
+        #endregion
 
-#region StartsWith EndWith
+        #region StartsWith EndWith
 
         public static bool EndsWith(this string str, char value)
         {
@@ -238,9 +241,9 @@ namespace DrNet.Extensions.String
             return referenceCulture.CompareInfo.IsPrefix(@this, value, ignoreCase ? CompareOptions.IgnoreCase : CompareOptions.None);
         }
 
-#endregion
+        #endregion
 
-#region Not
+        #region Not
 
         public static bool NotContains(this string str, char value)
             => !str.Contains(value);
@@ -302,20 +305,18 @@ namespace DrNet.Extensions.String
         public static bool NotStartsWith(this string str, string value, StringComparison comparisonType)
             => !str.StartsWith(value, comparisonType);
 
-#endregion
+        #endregion
+
+        public static string EmptyIfIsNull(this string? @this)
+            => @this.IsNullOrEmpty() ? string.Empty : @this;
+
+        public static string EmptyIfIsNullOrWhiteSpace(this string? @this)
+            => @this.IsNullOrWhiteSpace() ? string.Empty : @this;
 
         public static string RemoveStart(this string @this, string value)
-        {
-            if (@this.StartsWith(value))
-                return @this.Substring(value.Length);
-            return @this;
-        }
+            => @this.StartsWith(value) ? @this.Substring(value.Length) : @this;
 
         public static string RemoveEnd(this string @this, string value)
-        {
-            if (@this.EndsWith(value))
-                return @this.Substring(0, @this.Length - value.Length);
-            return @this;
-        }
+            => @this.EndsWith(value) ? @this.Substring(0, @this.Length - value.Length) : @this;
     }
 }
