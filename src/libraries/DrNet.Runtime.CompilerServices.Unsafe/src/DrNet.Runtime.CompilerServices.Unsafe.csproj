@@ -17,7 +17,7 @@
     </Description>
 
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Nullable" Version="1.*">
       <PrivateAssets>all</PrivateAssets>
