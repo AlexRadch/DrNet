@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;netstandard2.1;netstandard2.0</TargetFrameworks>
     <!--
       net6.0;net5.0; // .NET 5+
       netcoreapp3.1;netcoreapp3.0;netcoreapp2.2;netcoreapp2.0;netcoreapp1.1;netcoreapp1.0; // .NET Core
@@ -26,37 +26,40 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+
+    <PackageReference Include="DrNet.Runtime.CompilerServices.Unsafe" Version="6.*-*">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
-  <!--<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.*-*" />
+  <!--  DrNet.Extensions  -->
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+    <Compile Remove="DrNet.Extensions\IntPtrExtensions.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet.Extensions\UIntPtrExtensions.ReadOnlySpan.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+    <Compile Remove="DrNet.Extensions\IntPtrExtensions.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet.Extensions\UIntPtrExtensions.ReadOnlySpan.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
-  </ItemGroup>-->
+    <Compile Remove="DrNet.Extensions\IntPtrExtensions.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet.Extensions\UIntPtrExtensions.ReadOnlySpan.cs" />
+  </ItemGroup>
 
   <!--  StringExtensions  -->
   
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <DefineConstants>$(DefineConstants);StringNoContains</DefineConstants>
     <DefineConstants>$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
@@ -79,34 +82,36 @@
   <!--  StringParseExtensions  -->
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.NoParse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.NoParse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.NoParse.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.NoParse.cs" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.NoParse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.NoParse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.NoParse.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
-    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtrUIntPtr.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
+    <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
