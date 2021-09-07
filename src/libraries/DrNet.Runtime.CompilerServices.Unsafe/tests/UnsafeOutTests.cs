@@ -3,11 +3,10 @@
 
 #nullable enable
 
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using Xunit;
 
-namespace System.Runtime.CompilerServices
+namespace DrNet.Runtime.CompilerServices.Tests
 {
     public class UnsafeOutTests
     {
@@ -16,10 +15,10 @@ namespace System.Runtime.CompilerServices
         {
             byte[] b = new byte[4] { 0x42, 0x42, 0x42, 0x42 };
 
-            ref readonly int r = ref UnsafeOut.As<byte, int>(out b[0]);
+            ref int r = ref UnsafeOut.As<byte, int>(out b[0]);
             Assert.Equal(0x42424242, r);
 
-            Unsafe.AsRef(r) = 0x0EF00EF0;
+            r = 0x0EF00EF0;
             Assert.Equal(0xFE, b[0] | b[1] | b[2] | b[3]);
         }
     }

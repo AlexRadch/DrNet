@@ -3,7 +3,9 @@
 
 #nullable enable
 
-namespace System.Runtime.CompilerServices
+using System.Runtime.CompilerServices;
+
+namespace DrNet.Runtime.CompilerServices
 {
     /// <summary>
     /// Contains generic, low-level functionality for manipulating out pointers.
@@ -22,7 +24,7 @@ namespace System.Runtime.CompilerServices
         /// 
         /// <returns>A reference to a value of type TTo.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly TTo As<TFrom, TTo>(out TFrom source)
+        public static ref TTo As<TFrom, TTo>(out TFrom source)
         {
             Unsafe.SkipInit(out source);
             return ref Unsafe.As<TFrom, TTo>(ref source);

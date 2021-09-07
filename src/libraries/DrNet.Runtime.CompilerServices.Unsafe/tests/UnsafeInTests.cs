@@ -3,12 +3,17 @@
 
 #nullable enable
 
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace System.Runtime.CompilerServices
+namespace DrNet.Runtime.CompilerServices.Tests
 {
+#pragma warning disable IDE0008 // Use explicit type
+#pragma warning disable IDE0090 // Use 'new(...)'
+
     public class UnsafeInTests
     {
         [Fact]
@@ -499,4 +504,7 @@ namespace System.Runtime.CompilerServices
             return unaligned;
         }
     }
+
+#pragma warning restore IDE0008 // Use explicit type
+#pragma warning restore IDE0090 // Use 'new(...)'
 }

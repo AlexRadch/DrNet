@@ -10,9 +10,18 @@
     <PackageProjectUrl>https://github.com/AlexRadch/DrNet</PackageProjectUrl>
     <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
     <PackageIcon>Icon.png</PackageIcon>
+
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/AlexRadch/DrNet</RepositoryUrl>
-
     <RepositoryCommit>$(DrNetCommit)</RepositoryCommit>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
 </Project>

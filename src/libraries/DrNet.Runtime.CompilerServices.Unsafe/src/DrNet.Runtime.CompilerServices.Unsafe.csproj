@@ -1,45 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;netstandard1.1</TargetFrameworks>
-    <RootNamespace>System.Runtime.CompilerServices</RootNamespace>
+    <TargetFrameworks>net6.0;net5.0;netstandard2.1;netstandard2.0;netstandard1.1;netstandard1.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>9.0</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Provides the System.Runtime.CompilerServices.UnsafeIn and System.Runtime.CompilerServices.UnsafeOut classes, which provides generic, low-level functionality for manipulating pointers.
+    <Description>
+      Provides the DrNet.Runtime.CompilerServices.UnsafeIn and DrNet.Runtime.CompilerServices.UnsafeOut classes,
+      which provides generic, low-level functionality for manipulating pointers.
 
-Commonly Used Types:
-System.Runtime.CompilerServices.UnsafeIn
-System.Runtime.CompilerServices.UnsafeOut</Description>
+      Commonly Used Types:
+      DrNet.Runtime.CompilerServices.UnsafeIn
+      DrNet.Runtime.CompilerServices.UnsafeOut
+    </Description>
 
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
-    <DefineConstants>$(DefineConstants);UNSAFE5P</DefineConstants>
-    <DefineConstants>$(DefineConstants);UNSAFE6P</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <DefineConstants>$(DefineConstants);UNSAFE5P</DefineConstants>
-    <DefineConstants>$(DefineConstants);UNSAFE6P</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <DefineConstants>$(DefineConstants);UNSAFE5P</DefineConstants>
-    <DefineConstants>$(DefineConstants);UNSAFE6P</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DefineConstants>$(DefineConstants);UNSAFE5P</DefineConstants>
-    <DefineConstants>$(DefineConstants);UNSAFE6P</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
-    <DefineConstants>$(DefineConstants);UNSAFE5P</DefineConstants>
-  </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Nullable" Version="1.*">
       <PrivateAssets>all</PrivateAssets>
@@ -47,12 +25,33 @@ System.Runtime.CompilerServices.UnsafeOut</Description>
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*UNSAFE5P(;.*)*$'))">
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.*-*" />
   </ItemGroup>
 
-  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*UNSAFE6P(;.*)*$'))">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.*-*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.*-*" />
+    <Compile Remove="UnsafeIn.nuint.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.*-*" />
+    <Compile Remove="UnsafeIn.nuint.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+    <Compile Remove="UnsafeIn.nuint.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+    <Compile Remove="UnsafeIn.nuint.cs" />
+    <Compile Remove="UnsafeIn.cs" />
   </ItemGroup>
 
   <ItemGroup>
