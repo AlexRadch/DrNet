@@ -1,9 +1,9 @@
-using System;
 using Xunit;
+
 
 namespace DrNet.Math.Tests
 {
-    public class MathDrTests
+    public class DrNetMathTests
     {
         [Theory]
         [InlineData(0, 0)]
@@ -45,6 +45,6 @@ namespace DrNet.Math.Tests
         [InlineData(int.MinValue, 0)]
         [InlineData(int.MinValue, 1)]
         public void IntPowerLong(long x, uint exp)
-            => Assert.Equal(System.Math.Pow(x, exp), MathDr.IntPower(x, exp));
+            => Assert.Equal(System.Math.Pow(x, exp), DrNetMath.IntPower(x, exp));
     }
 }

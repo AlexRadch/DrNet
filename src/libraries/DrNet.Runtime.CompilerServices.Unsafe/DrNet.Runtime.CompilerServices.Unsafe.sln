@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrNet.Runtime.CompilerServices.UnsafeIn", "src\DrNet.Runtime.CompilerServices.UnsafeIn.csproj", "{602A0E43-633E-479F-B0D1-2BFD958AE00E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrNet.Runtime.CompilerServices.Unsafe", "src\DrNet.Runtime.CompilerServices.Unsafe.csproj", "{602A0E43-633E-479F-B0D1-2BFD958AE00E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrNet.Runtime.CompilerServices.UnsafeIn.Tests", "tests\DrNet.Runtime.CompilerServices.UnsafeIn.Tests.csproj", "{6AA3EFB1-236C-4DD0-B42D-4C8D85340E80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrNet.Runtime.CompilerServices.Unsafe.Tests", "tests\DrNet.Runtime.CompilerServices.Unsafe.Tests.csproj", "{6AA3EFB1-236C-4DD0-B42D-4C8D85340E80}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1207316A-3A1D-4102-B026-BC58F9740DB8}"
 EndProject

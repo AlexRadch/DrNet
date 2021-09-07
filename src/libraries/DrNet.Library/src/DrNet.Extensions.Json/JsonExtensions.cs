@@ -3,7 +3,11 @@
 
 #nullable enable
 
-namespace System.Text.Json
+using DrNet.Extensions.String;
+using System;
+using System.Text.Json;
+
+namespace DrNet.Extensions.Json
 {
     /// <summary>
     /// Extensions for Json classes <see cref="JsonDocument"/>, <see cref="JsonElement"/>
@@ -55,9 +59,9 @@ namespace System.Text.Json
         /// <param name="element"></param>
         /// <param name="propertyName"></param>
         /// <returns></returns>
-        public static string TryGetPropertyString(this JsonElement element, string propertyName)
+        public static string? TryGetPropertyString(this JsonElement element, string propertyName)
         {
-            if (element.ValueKind == JsonValueKind.Object && element.TryGetProperty(propertyName, out var property))
+            if (element.ValueKind == JsonValueKind.Object && element.TryGetProperty(propertyName, out JsonElement property))
             {
                 switch (property.ValueKind)
                 {
@@ -65,13 +69,30 @@ namespace System.Text.Json
                     case JsonValueKind.Number:
                     case JsonValueKind.True:
                     case JsonValueKind.False:
-                        return property.GetString().Trim();
+                        return property.GetString();
                 }
             }
 
             return default;
         }
 
+        /// <summary>
+        /// TODO: TryGetPropertiesString
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="propertyNames"></param>
+        /// <returns></returns>
+        public static string? TryGetPropertiesString(this JsonElement element, params string[] propertyNames)
+        {
+            if (element.ValueKind == JsonValueKind.Object)
+                foreach (string propertyName in propertyNames)
+                {
+                    string? result = element.TryGetPropertyString(propertyName);
+                    if (!result.IsNullOrEmpty())
+                        return result;
+                }
 
+            return default;
+        }
     }
 }

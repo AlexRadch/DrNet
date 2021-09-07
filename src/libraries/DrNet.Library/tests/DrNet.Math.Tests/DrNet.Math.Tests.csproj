@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TargetFramework>net5.0</TargetFramework>
+
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\DrNet.Runtime.CompilerServices.UnsafeIn.csproj" />
+    <ProjectReference Include="..\..\src\DrNet.Library.csproj" />
   </ItemGroup>
+
 </Project>

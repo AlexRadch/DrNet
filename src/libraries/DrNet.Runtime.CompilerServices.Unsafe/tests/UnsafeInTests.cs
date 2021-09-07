@@ -9,7 +9,7 @@ using Xunit;
 
 namespace System.Runtime.CompilerServices
 {
-    public class UnsafeTests
+    public class UnsafeInTests
     {
         [Fact]
         public static unsafe void CopyToVoidPtr()

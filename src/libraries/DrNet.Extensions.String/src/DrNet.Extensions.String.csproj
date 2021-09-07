@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;netstandard1.1;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;netstandard2.1;netstandard2.0;netstandard1.1;netstandard1.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -16,25 +16,57 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <DefineConstants>$(DefineConstants);NoHalfClass</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoIntPtrParsing</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DefineConstants >$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoHalfClass</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoIntPtrParsing</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
-    <DefineConstants >$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
-    <DefineConstants >$(DefineConstants);StringNoNormalization</DefineConstants>
-    <DefineConstants >$(DefineConstants);StringNoCompareCulture</DefineConstants>
-    <DefineConstants >$(DefineConstants);StringNoIntern</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoNormalization</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoCompareCulture</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoIntern</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoHalfClass</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoIntPtrParsing</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
-    <DefineConstants >$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
-    <DefineConstants >$(DefineConstants);StringNoNormalization</DefineConstants>
-    <DefineConstants >$(DefineConstants);StringNoCompareCulture</DefineConstants>
-    <DefineConstants >$(DefineConstants);StringNoIntern</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoIndexOfCharComparisonType</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoNormalization</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoCompareCulture</DefineConstants>
+    <DefineConstants>$(DefineConstants);StringNoIntern</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoHalfClass</DefineConstants>
+    <DefineConstants>$(DefineConstants);NoIntPtrParsing</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.*-*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.*" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\..\..\Icon.png">

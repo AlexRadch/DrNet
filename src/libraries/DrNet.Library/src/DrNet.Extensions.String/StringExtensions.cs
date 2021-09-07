@@ -4,11 +4,14 @@
 #nullable enable
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
 namespace DrNet.Extensions.String
 {
+    #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
     /// <summary>
     /// Extensions methods for string class
     /// </summary>
@@ -20,9 +23,9 @@ namespace DrNet.Extensions.String
             => string.Compare(strA, indexA, strB, indexB, length);
 
         public static int Compare(this string? strA, int indexA, string? strB, int indexB, int length, bool ignoreCase)
-#if !StringNoCompareCulture
+        #if !StringNoCompareCulture
             => string.Compare(strA, indexA, strB, indexB, length, ignoreCase);
-#else
+        #else
         {
             // Ideally we would just forward to the string.Compare overload that takes
             // a StringComparison parameter, and just pass in CurrentCulture/CurrentCultureIgnoreCase.
@@ -54,22 +57,22 @@ namespace DrNet.Extensions.String
             CompareOptions options = ignoreCase ? CompareOptions.IgnoreCase : CompareOptions.None;
             return CultureInfo.CurrentCulture.CompareInfo.Compare(strA, indexA, lengthA, strB, indexB, lengthB, options);
         }
-#endif
+        #endif
 
         public static int Compare(this string? strA, int indexA, string? strB, int indexB, int length, bool ignoreCase, CultureInfo? culture)
-#if !StringNoCompareCulture
+        #if !StringNoCompareCulture
             => string.Compare(strA, indexA, strB, indexB, length, ignoreCase, culture);
-#else
+        #else
         {
             CompareOptions options = ignoreCase ? CompareOptions.IgnoreCase : CompareOptions.None;
             return Compare(strA, indexA, strB, indexB, length, culture, options);
         }
-#endif
+        #endif
 
         public static int Compare(this string? strA, int indexA, string? strB, int indexB, int length, CultureInfo? culture, CompareOptions options)
-#if !StringNoCompareCulture
+        #if !StringNoCompareCulture
             => string.Compare(strA, indexA, strB, indexB, length, culture, options);
-#else
+        #else
         {
             CultureInfo compareCulture = culture ?? CultureInfo.CurrentCulture;
             int lengthA = length;
@@ -87,7 +90,7 @@ namespace DrNet.Extensions.String
 
             return compareCulture.CompareInfo.Compare(strA, indexA, lengthA, strB, indexB, lengthB, options);
         }
-#endif
+        #endif
 
         public static int Compare(this string? strA, int indexA, string? strB, int indexB, int length, StringComparison comparisonType)
             => string.Compare(strA, indexA, strB, indexB, length, comparisonType);
@@ -96,34 +99,34 @@ namespace DrNet.Extensions.String
             => string.Compare(strA, strB);
 
         public static int Compare(this string? strA, string? strB, bool ignoreCase)
-#if !StringNoCompareCulture
+        #if !StringNoCompareCulture
             => string.Compare(strA, strB, ignoreCase);
-#else
+        #else
         {
             StringComparison comparisonType = ignoreCase ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture;
             return Compare(strA, strB, comparisonType);
         }
-#endif
+        #endif
 
         public static int Compare(this string? strA, string? strB, bool ignoreCase, CultureInfo? culture)
-#if !StringNoCompareCulture
-        => string.Compare(strA, strB, ignoreCase, culture);
-#else
+        #if !StringNoCompareCulture
+            => string.Compare(strA, strB, ignoreCase, culture);
+        #else
         {
             CompareOptions options = ignoreCase ? CompareOptions.IgnoreCase : CompareOptions.None;
             return Compare(strA, strB, culture, options);
         }
-#endif
+        #endif
 
         public static int Compare(this string? strA, string? strB, CultureInfo? culture, CompareOptions options)
-#if !StringNoCompareCulture
+        #if !StringNoCompareCulture
             => string.Compare(strA, strB, culture, options);
-#else
+        #else
         {
             CultureInfo compareCulture = culture ?? CultureInfo.CurrentCulture;
             return compareCulture.CompareInfo.Compare(strA, strB, options);
         }
-#endif
+        #endif
 
         public static int Compare(this string? strA, string? strB, StringComparison comparisonType)
             => string.Compare(strA, strB, comparisonType);
@@ -161,40 +164,40 @@ namespace DrNet.Extensions.String
         public static string Format(this string format, params object?[] args)
             => string.Format(format, args);
 
-#if !StringNoIntern
+        #if !StringNoIntern
         public static string Intern(this string str)
             => string.Intern(str);
-#endif
+        #endif
 
-#if !StringNoIntern
+        #if !StringNoIntern
         public static string? IsInterned(this string str)
             => string.IsInterned(str);
-#endif
+        #endif
 
         //public static bool IsNullOrEmpty([NotNullWhen(false)] this string? value)
-        public static bool IsNullOrEmpty(this string? value)
+        public static bool IsNullOrEmpty([NotNullWhen(false)] this string? value)
             => string.IsNullOrEmpty(value);
 
         //public static bool IsNullOrWhiteSpace([NotNullWhen(false)] this string? value)
-        public static bool IsNullOrWhiteSpace(this string? value)
+        public static bool IsNullOrWhiteSpace([NotNullWhen(false)]  this string? value)
             => string.IsNullOrWhiteSpace(value);
 
-#endregion
+        #endregion
 
         #region Contains
 
         public static bool Contains(this string str, char value)
-            => str.IndexOf(value) >= 0;
+            => str.Contains(value);
 
         public static bool Contains(this string str, char value, StringComparison comparisonType)
-#if !StringNoIndexOfCharComparisonType
-            => str.IndexOf(value, comparisonType) >= 0;
-#else
+        #if !StringNoIndexOfCharComparisonType
+            => str.Contains(value, comparisonType);
+        #else
             => str.IndexOf(value.ToString(), comparisonType) >= 0;
-#endif
+        #endif
 
         public static bool Contains(this string str, string value, StringComparison comparisonType)
-            => str.IndexOf(value, comparisonType) >= 0;
+            => str.Contains(value, comparisonType);
 
         #endregion
 
@@ -275,22 +278,20 @@ namespace DrNet.Extensions.String
         public static bool NotEquals(this string? a, string? b, StringComparison comparisonType)
             => !string.Equals(a, b, comparisonType);
 
-#if !StringNoNormalization
+        #if !StringNoNormalization
         public static bool IsNotNormalized(this string str)
             => !str.IsNormalized();
-#endif
+        #endif
 
-#if !StringNoNormalization
+        #if !StringNoNormalization
         public static bool IsNotNormalized(this string str, NormalizationForm normalizationForm)
             => !str.IsNormalized(normalizationForm);
-#endif
+        #endif
 
-        //public static bool IsNotNullAndNotEmpty([NotNullWhen(false)] this string? value)
-        public static bool IsNotNullAndNotEmpty(this string? value)
+        public static bool IsNotNullAndNotEmpty([NotNullWhen(true)] this string? value)
             => !string.IsNullOrEmpty(value);
 
-        //public static bool IsNotNullAndNotWhiteSpace([NotNullWhen(false)] this string? value)
-        public static bool IsNotNullAndNotWhiteSpace(this string? value)
+        public static bool IsNotNullAndNotWhiteSpace([NotNullWhen(false)] this string? value)
             => !string.IsNullOrWhiteSpace(value);
 
         public static bool NotStartsWith(this string str, char value)
@@ -307,6 +308,8 @@ namespace DrNet.Extensions.String
 
         #endregion
 
+        #region New
+
         public static string EmptyIfIsNull(this string? @this)
             => @this.IsNullOrEmpty() ? string.Empty : @this;
 
@@ -318,5 +321,9 @@ namespace DrNet.Extensions.String
 
         public static string RemoveEnd(this string @this, string value)
             => @this.EndsWith(value) ? @this.Substring(0, @this.Length - value.Length) : @this;
+
+        #endregion
     }
+
+    #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }
