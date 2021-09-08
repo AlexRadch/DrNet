@@ -12,7 +12,7 @@
       wp;[wp7];wp7;wp75;wp8;wp81;wpa81; // Windows Phone
       uap;[uap10.0];uap10.0;[win10];[netcore50] // Universal Windows Platform
     -->
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <RootNamespace>DrNet</RootNamespace>

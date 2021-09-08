@@ -15,7 +15,7 @@ namespace DrNet.Extensions.String
     /// <summary>
     /// Extensions methods for string class
     /// </summary>
-    public static class StringExtensions
+    public static class CsExtensions
     {
         #region Fast static methods access
 
