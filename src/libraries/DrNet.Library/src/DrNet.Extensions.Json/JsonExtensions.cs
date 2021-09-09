@@ -24,6 +24,14 @@ namespace DrNet.Extensions.Json
         public static string? TryGetString(this JsonElement element)
         => element.ValueKind.InSet(JsonValueKind.String, JsonValueKind.Number, JsonValueKind.True, JsonValueKind.False) ? element.GetString() : default;
 
+        public static bool? TryGetBoolean(this JsonElement element)
+        => element.ValueKind switch
+        {
+            JsonValueKind.False => false,
+            JsonValueKind.True => true,
+            _ => default,
+        };
+
         public static byte? TryGetByte(this JsonElement element)
         => element.ValueKind == JsonValueKind.Number && element.TryGetByte(out byte value) ? value : default;
 
@@ -92,6 +100,9 @@ namespace DrNet.Extensions.Json
 
         public static string? TryGetPropertiesString(this JsonElement element, params string[] propertyNames)
         => element.TryGetPropertiesString((IEnumerable<string>)propertyNames);
+
+        public static bool? TryGetPropertyBoolean(this JsonElement element, string propertyName)
+        => element.TryGetElement(propertyName)?.TryGetBoolean();
 
         public static byte? TryGetPropertyByte(this JsonElement element, string propertyName)
         => element.TryGetElement(propertyName)?.TryGetByte();
