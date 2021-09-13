@@ -21,133 +21,151 @@ namespace DrNet.Extensions.Json
     {
         #region TryGet
 
+        public static JsonElement? TryGetPropertyOrNull(this JsonElement element, ReadOnlySpan<byte> utf8PropertyName)
+        => element.ValueKind == JsonValueKind.Object && element.TryGetProperty(utf8PropertyName, out JsonElement property) ? property : null;
+
+        public static JsonElement? TryGetPropertyOrNull(this JsonElement element, ReadOnlySpan<char> propertyName)
+        => element.ValueKind == JsonValueKind.Object && element.TryGetProperty(propertyName, out JsonElement property) ? property : null;
+
+        public static JsonElement? TryGetPropertyOrNull(this JsonElement element, string propertyName)
+        => element.ValueKind == JsonValueKind.Object && element.TryGetProperty(propertyName, out JsonElement property) ? property : null;
+
+        public static JsonElement? TryGetNestedPropertyOrNull(this JsonElement element, params string[] propertiesNames)
+        //=> propertiesNames.Aggregate((JsonElement?)element, (element, propertyName) => element?.TryGetPropertyOrNull(propertyName));
+        //{
+        //    JsonElement? cElement = element;
+        //    propertiesNames.TakeWhile(propertyName => { cElement = cElement.Value.TryGetPropertyOrNull(propertyName); return cElement.HasValue; }).Last();
+        //    return cElement;
+        //}
+        {
+            JsonElement? cElement = element;
+            foreach (var propertyName in propertiesNames)
+            {
+                cElement = cElement.Value.TryGetPropertyOrNull(propertyName);
+                if (!cElement.HasValue)
+                    break;
+            }
+            return cElement;
+        }
+
         public static string? TryGetString(this JsonElement element)
-        => element.ValueKind.InSet(JsonValueKind.String, JsonValueKind.Number, JsonValueKind.True, JsonValueKind.False) ? element.GetString() : default;
+        => element.ValueKind.InSet(JsonValueKind.String, JsonValueKind.Number, JsonValueKind.True, JsonValueKind.False) ? element.GetString() : null;
 
         public static bool? TryGetBoolean(this JsonElement element)
         => element.ValueKind switch
         {
             JsonValueKind.False => false,
             JsonValueKind.True => true,
-            _ => default,
+            _ => null,
         };
 
         public static byte? TryGetByte(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetByte(out byte value) ? value : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetByte(out byte value) ? value : null;
 
         public static byte[]? TryGetBytesFromBase64(this JsonElement element)
-        => element.ValueKind == JsonValueKind.String && element.TryGetBytesFromBase64(out byte[]? value) ? value : default;
+        => element.ValueKind == JsonValueKind.String && element.TryGetBytesFromBase64(out byte[]? value) ? value : null;
 
         public static DateTime? TryGetDateTime(this JsonElement element)
-        => element.ValueKind == JsonValueKind.String && element.TryGetDateTime(out DateTime value) ? value : default;
+        => element.ValueKind == JsonValueKind.String && element.TryGetDateTime(out DateTime value) ? value : null;
 
         public static DateTimeOffset? TryGetDateTimeOffset(this JsonElement element)
-        => element.ValueKind == JsonValueKind.String && element.TryGetDateTimeOffset(out DateTimeOffset value) ? value : default;
+        => element.ValueKind == JsonValueKind.String && element.TryGetDateTimeOffset(out DateTimeOffset value) ? value : null;
 
         public static decimal? TryGetDecimal(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetDecimal(out decimal value) ? value : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetDecimal(out decimal value) ? value : null;
 
         public static double? TryGetDouble(this JsonElement element)
         => element.ValueKind == JsonValueKind.Number && element.TryGetDouble(out double value) ? value : default;
 
         public static Guid? TryGetGuid(this JsonElement element)
-        => element.ValueKind == JsonValueKind.String && element.TryGetGuid(out Guid value) ? value : default;
+        => element.ValueKind == JsonValueKind.String && element.TryGetGuid(out Guid value) ? value : null;
 
         public static short? TryGetInt16(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetInt16(out short value) ? value : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetInt16(out short value) ? value : null;
 
         public static int? TryGetInt32(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetInt32(out int value) ? value : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetInt32(out int value) ? value : null;
 
         public static long? TryGetInt64(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetInt64(out long value) ? value : default;
-
-        public static JsonElement? TryGetElement(this JsonElement element, ReadOnlySpan<byte> utf8PropertyName)
-        => element.ValueKind == JsonValueKind.Object && element.TryGetProperty(utf8PropertyName, out JsonElement property) ? property : default;
-
-        public static JsonElement? TryGetElement(this JsonElement element, ReadOnlySpan<char> propertyName)
-        => element.ValueKind == JsonValueKind.Object && element.TryGetProperty(propertyName, out JsonElement property) ? property : default;
-
-        public static JsonElement? TryGetElement(this JsonElement element, string propertyName)
-        => element.ValueKind == JsonValueKind.Object && element.TryGetProperty(propertyName, out JsonElement property) ? property : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetInt64(out long value) ? value : null;
 
         public static sbyte? TryGetSByte(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetSByte(out sbyte property) ? property : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetSByte(out sbyte property) ? property : null;
 
         public static float? TryGetSingle(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetSingle(out float property) ? property : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetSingle(out float property) ? property : null;
 
         public static ushort? TryGetUInt16(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetUInt16(out ushort property) ? property : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetUInt16(out ushort property) ? property : null;
 
         public static uint? TryGetUInt32(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetUInt32(out uint property) ? property : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetUInt32(out uint property) ? property : null;
 
         public static ulong? TryGetUInt64(this JsonElement element)
-        => element.ValueKind == JsonValueKind.Number && element.TryGetUInt64(out ulong property) ? property : default;
+        => element.ValueKind == JsonValueKind.Number && element.TryGetUInt64(out ulong property) ? property : null;
 
         #endregion
 
         #region TryGetPropertyType
 
         public static string? TryGetPropertyString(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetString();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetString();
 
         public static string? TryGetPropertiesString(this JsonElement element, IEnumerable<string> propertyNames)
         => element.ValueKind == JsonValueKind.Object
             ? propertyNames.Select(propertyName => element.TryGetPropertyString(propertyName)).FirstOrDefault(value => !value.IsNullOrEmpty())
-            : default;
+            : null;
 
         public static string? TryGetPropertiesString(this JsonElement element, params string[] propertyNames)
         => element.TryGetPropertiesString((IEnumerable<string>)propertyNames);
 
         public static bool? TryGetPropertyBoolean(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetBoolean();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetBoolean();
 
         public static byte? TryGetPropertyByte(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetByte();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetByte();
 
         public static byte[]? TryGetPropertyBytesFromBase64(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetBytesFromBase64();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetBytesFromBase64();
 
         public static DateTime? TryGetPropertyDateTime(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetDateTime();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetDateTime();
 
         public static DateTimeOffset? TryGetPropertyDateTimeOffset(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetDateTimeOffset();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetDateTimeOffset();
 
         public static decimal? TryGetPropertyDecimal(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetDecimal();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetDecimal();
 
         public static double? TryGetPropertyDouble(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetDouble();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetDouble();
 
         public static Guid? TryGetPropertyGuid(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetGuid();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetGuid();
 
         public static short? TryGetPropertyInt16(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetInt16();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetInt16();
 
         public static int? TryGetPropertyInt32(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetInt32();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetInt32();
 
         public static long? TryGetPropertyInt64(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetInt64();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetInt64();
 
         public static sbyte? TryGetPropertySByte(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetSByte();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetSByte();
 
         public static float? TryGetPropertySingle(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetSingle();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetSingle();
 
         public static ushort? TryGetPropertyUInt16(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetUInt16();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetUInt16();
 
         public static uint? TryGetPropertyUInt32(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetUInt32();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetUInt32();
 
         public static ulong? TryGetPropertyUInt64(this JsonElement element, string propertyName)
-        => element.TryGetElement(propertyName)?.TryGetUInt64();
+        => element.TryGetPropertyOrNull(propertyName)?.TryGetUInt64();
 
         #endregion
     }
