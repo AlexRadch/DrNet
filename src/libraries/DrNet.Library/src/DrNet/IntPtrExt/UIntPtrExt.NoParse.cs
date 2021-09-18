@@ -15,7 +15,7 @@ namespace DrNet.Extensions
     /// <summary>
     /// Extensions methods for UIntPtr class
     /// </summary>
-    public static partial class UIntPtrExtensions
+    public static partial class UIntPtrExt
     {
         public static UIntPtr Parse(string s)
         => UIntPtr.Size switch

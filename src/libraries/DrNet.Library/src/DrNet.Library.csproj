@@ -44,18 +44,18 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <Compile Remove="DrNet.Extensions\IntPtrExtensions.ReadOnlySpan.cs" />
-    <Compile Remove="DrNet.Extensions\UIntPtrExtensions.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet\IntPtrExt.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet\UIntPtrExt.ReadOnlySpan.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
-    <Compile Remove="DrNet.Extensions\IntPtrExtensions.ReadOnlySpan.cs" />
-    <Compile Remove="DrNet.Extensions\UIntPtrExtensions.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet\IntPtrExt.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet\UIntPtrExt.ReadOnlySpan.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
-    <Compile Remove="DrNet.Extensions\IntPtrExtensions.ReadOnlySpan.cs" />
-    <Compile Remove="DrNet.Extensions\UIntPtrExtensions.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet\IntPtrExt.ReadOnlySpan.cs" />
+    <Compile Remove="DrNet\UIntPtrExt.ReadOnlySpan.cs" />
   </ItemGroup>
 
   <!--  StringExtensions  -->
@@ -82,34 +82,70 @@
   <!--  StringParseExtensions  -->
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.NoParse.cs" />
+
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.NoParse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.NoParse.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.Parse.cs" />
+    
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.NoParse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.NoParse.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.Parse.cs" />
+
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.Parse.cs" />
+
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.Parse.cs" />
+
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\IntPtrExt.ReadOnlySpan.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.Parse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.NoParse.cs" />
+    <Compile Remove="DrNet\IntPtrExt\UIntPtrExt.ReadOnlySpan.Parse.cs" />
+
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.IntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.UIntPtr.Parse.cs" />
     <Compile Remove="DrNet.Extensions.String.Parse\StringParseExtensions.Half.cs" />

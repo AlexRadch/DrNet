@@ -11,9 +11,9 @@ namespace DrNet.Extensions.Cs
     #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
     /// <summary>
-    /// Extensions methods for C# language
+    /// Extensions methods for Classes
     /// </summary>
-    public static class CsExtensions
+    public static class ClassExtensions
     {
         #region InSet
 

@@ -39,7 +39,7 @@ namespace DrNet.Extensions.Json
         //}
         {
             JsonElement? cElement = element;
-            foreach (var propertyName in propertiesNames)
+            foreach (string? propertyName in propertiesNames)
             {
                 cElement = cElement.Value.TryGetPropertyOrNull(propertyName);
                 if (!cElement.HasValue)
@@ -49,7 +49,9 @@ namespace DrNet.Extensions.Json
         }
 
         public static string? TryGetString(this JsonElement element)
-        => element.ValueKind.InSet(JsonValueKind.String, JsonValueKind.Number, JsonValueKind.True, JsonValueKind.False) ? element.GetString() : null;
+        => element.ValueKind.InSet(JsonValueKind.String, JsonValueKind.Number, JsonValueKind.True, JsonValueKind.False, JsonValueKind.Null)
+            ? element.ToString()
+            : null;
 
         public static bool? TryGetBoolean(this JsonElement element)
         => element.ValueKind switch

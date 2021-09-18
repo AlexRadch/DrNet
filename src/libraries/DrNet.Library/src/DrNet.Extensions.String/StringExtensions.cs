@@ -15,9 +15,9 @@ namespace DrNet.Extensions.String
     /// <summary>
     /// Extensions methods for string class
     /// </summary>
-    public static class CsExtensions
+    public static class StringExtensions
     {
-        #region Fast static methods access
+        #region For static methods
 
         public static int Compare(this string? strA, int indexA, string? strB, int indexB, int length)
             => string.Compare(strA, indexA, strB, indexB, length);
@@ -248,6 +248,24 @@ namespace DrNet.Extensions.String
 
         #region Not
 
+        #region Not for static methods
+
+        public static bool NotEquals(this string? a, string? b)
+            => !string.Equals(a, b);
+
+        public static bool NotEquals(this string? a, string? b, StringComparison comparisonType)
+            => !string.Equals(a, b, comparisonType);
+
+        public static bool IsNotNullAndNotEmpty([NotNullWhen(true)] this string? value)
+            => !string.IsNullOrEmpty(value);
+
+        public static bool IsNotNullAndNotWhiteSpace([NotNullWhen(false)] this string? value)
+            => !string.IsNullOrWhiteSpace(value);
+
+        #endregion
+
+        #region Not for string methods
+
         public static bool NotContains(this string str, char value)
             => !str.Contains(value);
 
@@ -272,12 +290,6 @@ namespace DrNet.Extensions.String
         public static bool NotEndsWith(this string str, string value, StringComparison comparisonType)
             => !str.EndsWith(value, comparisonType);
 
-        public static bool NotEquals(this string? a, string? b)
-            => !string.Equals(a, b);
-
-        public static bool NotEquals(this string? a, string? b, StringComparison comparisonType)
-            => !string.Equals(a, b, comparisonType);
-
         #if !StringNoNormalization
         public static bool IsNotNormalized(this string str)
             => !str.IsNormalized();
@@ -287,12 +299,6 @@ namespace DrNet.Extensions.String
         public static bool IsNotNormalized(this string str, NormalizationForm normalizationForm)
             => !str.IsNormalized(normalizationForm);
         #endif
-
-        public static bool IsNotNullAndNotEmpty([NotNullWhen(true)] this string? value)
-            => !string.IsNullOrEmpty(value);
-
-        public static bool IsNotNullAndNotWhiteSpace([NotNullWhen(false)] this string? value)
-            => !string.IsNullOrWhiteSpace(value);
 
         public static bool NotStartsWith(this string str, char value)
             => !str.StartsWith(value);
@@ -308,12 +314,14 @@ namespace DrNet.Extensions.String
 
         #endregion
 
+        #endregion
+
         #region New
 
-        public static string EmptyIfIsNull(this string? @this)
+        public static string EmptyIfNull(this string? @this)
             => @this.IsNullOrEmpty() ? string.Empty : @this;
 
-        public static string EmptyIfIsNullOrWhiteSpace(this string? @this)
+        public static string EmptyIfNullOrWhiteSpace(this string? @this)
             => @this.IsNullOrWhiteSpace() ? string.Empty : @this;
 
         public static string RemoveStart(this string @this, string value)
