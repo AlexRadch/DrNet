@@ -3,7 +3,7 @@ using Xunit;
 
 namespace DrNet.Math.Tests
 {
-    public class DrNetMathTests
+    public class MathExtTests
     {
         [Theory]
         [InlineData(0, 0)]
