@@ -5,7 +5,7 @@ namespace DrNet
     /// <summary>
     /// TODO: MathDr
     /// </summary>
-    public static class DrNetMath
+    public static class MathExt
     {
         #region IntPower
 
